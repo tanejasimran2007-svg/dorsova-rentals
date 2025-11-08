@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="dorsova.png">
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DORSOVA RENTALS</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif}
+    /* Remove blue underline from all links */
+a, a:visited, a:hover, a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.footer-logo{
+  height:45px;
+  margin-bottom:10px;
+}
+footer{
+  text-align:center;
+  padding:20px;
+  background:#ffb6d9;
+  color:#7a2a49;
+}
+
+
+
+    /* 🌸 Header / Task Bar (kept your formatting, added border + logo) */
+    header{
+      background:#ff4d88;color:#fff;padding:55px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      border-bottom:15px solid #e63e78;box-shadow:0 4px 12px rgba(255,77,136,.25)
+    }
+    .brand{display:flex;align-items:center;gap:11px}
+    .logo-wrap{
+  width:90px;height:88px;
+    }
+
+    /* Simple clean SVG logo */
+    .logo{width:110%;height:110%;display:block}
+
+    header h1{font-size:49px;letter-spacing:.5px}
+
+    .search-bar{display:flex;align-items:center;background:#fff;border-radius:15px;overflow:hidden;width:400px;border:2px solid #ffe4ef}
+    .search-bar{
+  display:flex;align-items:center;
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  width:800px; /* bigger search bar */
+  border:5px solid #ffe4ef;
+}
+
+.search-bar input{
+  border:none;
+  padding:14px 18px; /* more height */
+  flex:1;
+  outline:none;
+  font-size:25px; /* bigger text */
+}
+
+.search-bar button{
+  background:#ff4d88;
+  color:#ffe4ee;
+  border:none;
+  padding:18px 33px; /* larger button */
+  cursor:pointer;
+  font-size:29px;
+  border-radius:0 18px 18px 0;
+}
+ 
+    .search-bar button{background:#ff4d88;color:#fff;border:none;padding:10px 24px;cursor:pointer}
+
+    .nav-buttons{display:flex;gap:10px;flex-wrap:wrap}
+    .nav-buttons button{
+  background:white;
+  color:black;
+  border:2px solid #ffe4ef;
+  padding:14px 29px;   /* bigger */
+  font-size:25px;      /* larger text */
+  font-weight:600;
+  border-radius:29px;  /* more rounded */
+  cursor:pointer;
+  transition:.25s;
+}
+
+    .nav-buttons button:hover{background:#ffe4ee}
+
+    /* Tabs */
+    .container{width:90%;max-width:1200px;margin:19px auto}
+    .tabs{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .tabs button{
+  background:#fff;
+  color:#ff4d88;
+  border:2px solid #ffb3cd;
+  padding:14px 32px;   /* bigger size */
+  font-size:27px;      /* bigger text */
+  border-radius:30px;  /* cuter rounded shape */
+  cursor:pointer;
+  transition:.2s;
+  font-weight:600;
+}
+
+    .tabs button.active{background:#ff4d88;color:#fff;border-color:#ff4d88}
+
+    /* Product grid */
+    .dress-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);text-align:center;padding:15px;transition:transform .3s;border:2px solid #ffe4ef}
+    .card:hover{transform:scale(1.03)}
+    .card img{width:100%;height:320px;object-fit:cover;border-radius:10px}
+    .card h3{margin:10px 0 6px;font-size:26px}
+    .price{color:#ff4d88;font-weight:700;margin-bottom:8px}
+    button.primary{background:#ff4d88;color:#fff;border:none;padding:8px 15px;border-radius:8px;cursor:pointer;font-size:16px;transition:.25s}
+    button.primary:hover{background:#e63e78}
+    button.ghost{background:#fff;color:#ff4d88;border:2px solid #ffb3cd;padding:6px 12px;border-radius:8px;cursor:pointer}
+
+    /* Cart page */
+    #cartSection{display:none}
+    .cart-wrap{background:#fff;padding:16px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);border:2px solid #ffe4ef}
+    .cart-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .cart-grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .cart-item{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;background:#fff8fb;border:2px solid #ffb3cd;border-radius:12px;padding:10px}
+    .cart-item img{width:90px;height:90px;border-radius:10px;object-fit:cover}
+    .cart-item .info{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr)) 1fr;gap:10px;align-items:center}
+    .cart-item .title{font-weight:600}
+    .cart-item .meta{font-size:13px;color:#666}
+    .cart-item input[type="date"],.cart-item input[type="number"]{width:100%;padding:8px;border:1px solid #ccc;border-radius:8px}
+    .line{height:1px;background:#ffe4ef;margin:14px 0}
+    .totals{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .totals h3{color:#ff4d88}
+    .muted{color:#777;font-size:22px}
+.contact-area{
+  max-width: 800px;
+  margin: 50px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:14px;
+  border:2px solid #ffd6e6;
+  box-shadow:0 6px 16px rgba(255,182,216,.35);
+  text-align:center;
+}
+
+.contact-area h2{
+  font-family:"Playfair Display", serif;
+  color:#b23e6b;
+  font-size:32px;
+  margin-bottom:18px;
+  font-weight:700;
+}
+
+.message-box{
+  width:100%;
+  height:140px;
+  padding:14px;
+  border-radius:10px;
+  border:2px solid #ffd6e6;
+  font-size:16px;
+  outline:none;
+  resize:none;
+  background:#fff8fb;
+  margin-bottom:20px;
+}
+
+.message-box:focus{
+  border-color:#ff8ab8;
+}
+
+.send-btn{
+  background:#ff8ab8;
+  color:#fff;
+  padding:12px 30px;
+  border:none;
+  border-radius:26px;
+  font-size:18px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+
+.send-btn:hover{
+  background:#e66ca4;
+  transform:translateY(-2px);
+}
+
+    
+
+    /* Payment popup */
+    .payment-popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);justify-content:center;align-items:center;z-index:999}
+    .popup-content{background:#fff;padding:24px;border-radius:12px;width:90%;max-width:420px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.3);border:2px solid #ffe4ef}
+    .popup-content input,.popup-content select{width:100%;padding:10px;margin-top:10px;border:1px solid #ccc;border-radius:8px}
+    .popup-actions{display:flex;gap:8px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+    .cancel{background:gray!important}
+
+    /* Chatbot */
+    .chat-button{
+      position:fixed;right:22px;bottom:18px;background:#ff4d88;color:#fff;border:none;border-radius:50%;
+      width:56px;height:56px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(255,77,136,.45);z-index:998
+    }
+    .chat-window{
+      position:fixed;right:18px;bottom:90px;width:320px;max-height:60vh;background:#fff;border:2px solid #ffe4ef;border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden;z-index:998
+    }
+    .chat-header{background:#ff4d88;color:#fff;padding:10px 12px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+    .chat-body{padding:10px;height:300px;overflow:auto;background:#fff8fb}
+    .msg{margin:8px 0;display:flex}
+    .msg.user{justify-content:flex-end}
+    .bubble{
+      max-width:80%;padding:8px 12px;border-radius:12px;border:2px solid #ffb3cd;background:#fff;color:#333
+    }
+    .msg.user .bubble{background:#ff4d88;color:#fff;border-color:#ff4d88}
+    .chat-input{display:flex;gap:6px;padding:10px;background:#fff}
+    .chat-input input{flex:1;padding:10px;border:1px solid #ccc;border-radius:10px}
+    .chat-input button{padding:10px 12px;border:none;border-radius:10px;background:#ff4d88;color:#fff;cursor:pointer}
+
+    /* Responsive */
+    @media(max-width:768px){
+      header{flex-direction:column;align-items:flex-start}
+      .search-bar{width:100%}
+      .cart-item .info{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+    }
+h1{
+  text-align:center;
+}
+
+    
+    footer{text-align:center;padding:15px;margin-top:40px;background:#ff4d88;color:#fff;font-size:14px;border-top:4px solid #e63e78}
+  </style>
+</head>
+<body>
+
+  <!-- 🌸 Header / Task Bar -->
+  <header>
+    <div class="brand">
+      <div class="logo-wrap" aria-labelledby="Dorsova Rentals Logo">
+        <!-- Clean SVG logo with DR initials -->
+        <img src="dorsova.png" class="logo">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff84a9"/><stop offset="1" stop-color="#ff4d88"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="60" height="60" rx="12" fill="url(#g)"/>
+          <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" font-size="26" font-weight="700" fill="#fff" font-family="Poppins, Arial"></text>
+        </svg>
+      </div>
+      <h1 >DORSOVA RENTALS</h1>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for dresses or jewellery...">
+      <button onclick="searchProducts()">Search</button>
+    </div>
+
+   <div class="nav-buttons">
+  <button onclick="window.location.href='e commerce.html'">Home</button>
+  <button onclick="window.location.href='about.html'">About</button>
+  <button onclick="window.location.href='contact.html'">Contact</button>
+  <button onclick="showCart()">Cart 🛒</button>
+</div>
+
+  </header>
+
+
+  <div class="container">
+    <!-- Category Tabs -->
+    <div class="tabs">
+      <button id="tab-dresses" class="active" onclick="switchCategory('dresses')">Dresses</button>
+      <button id="tab-jewels" onclick="switchCategory('jewellery')">Rental Jewellery</button>
+    </div>
+
+    <!-- Home / Products -->
+    <section id="homeSection">
+      <h2>Available Items</h2><br/>
+      <div class="dress-list" id="productList"></div>
+    </section>
+
+    <!-- Cart Page -->
+    <section id="cartSection">
+      <div class="cart-wrap">
+        <div class="cart-head">
+          <h2>Your Cart</h2>
+          <div>
+            <button class="ghost" onclick="clearCart()">Clear Cart</button>
+            <button class="primary" onclick="openPayment()">Proceed to Pay</button>
+          </div>
+        </div>
+        <p class="muted">Tip: Set <b>From</b> and <b>To</b> dates per item. Total = Price × Days.</p>
+        <div class="line"></div>
+        <div id="cartItems" class="cart-grid"></div>
+        <div class="line"></div>
+        <div class="totals">
+          <div>
+            <h3 id="grandTotal">Grand Total: ₹0</h3>
+            <div class="muted" id="totalDaysInfo"></div>
+          </div>
+          <button class="primary" onclick="openPayment()">Checkout</button>
+        </div>
+      </div>
+    </section>
+
+    </section>
+          </div>
+        </div>
+        <section class="contact-area">
+  <h2>Contact & Inquiry</h2>
+
+  <textarea class="message-box" placeholder="Tell us about your event, sizes, colours you like..."></textarea>
+
+  <button class="send-btn">Send Message</button>
+</section>
+</div>
+
+
+  <footer>
+    
+  <img src="dorsova.png" class="footer-logo" alt="Dorsova Logo">
+  
+
+  <div class="footer-wrapper">
+
+    <div class="footer-col">
+      <h3>DORSOVA RENTALS</h3>
+      <p>Elegance, Affordability & Style — For Every Occasion ✨</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="e commerce.html">Home</a>
+      <a href="e commerce.html#dresses">Dresses</a>
+      <a href="e commerce.html#jewellery">Rental Jewellery</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="#" onclick="showCart()">Cart 🛒</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>📍 Jaipur, Rajasthan</p>
+      <p>📞 +91 7877904043</p>
+      <p>📧 dorsovarentals@gmail.com</p>
+      <a href="https://wa.me/917877904043" class="whatsapp-btn" target="_blank">Chat on WhatsApp 💬</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Made with 💗 by Simran Taneja © 2025 DORSOVA RENTALS
+  </div>
+</footer>
+
+
+
+  <!-- 💳 Payment Popup (enhanced address fields) -->
+  <div class="payment-popup" id="paymentPopup">
+    <div class="popup-content">
+      <h2>Checkout</h2>
+      <select id="paymentMethod">
+        <option value="upi">UPI / Paytm</option>
+        <option value="card">Credit / Debit Card</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="phone" placeholder="Phone (10 digits)" pattern="^[6-9]\d{9}$" required title="Enter valid 10-digit Indian mobile number">
+      <input type="text" id="address1" placeholder="Address Line 1" required>
+      <input type="text" id="address2" placeholder="Address Line 2 (optional)">
+      <input type="text" id="city" placeholder="City" required>
+      <input type="text" id="state" placeholder="State" required>
+      <input type="text" id="pincode" placeholder="Pincode" pattern="^\d{6}$" required title="6-digit PIN code">
+      <div class="popup-actions">
+        <button class="cancel" onclick="closePopup()">Cancel</button>
+        <button class="primary" onclick="completePayment()">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 💬 Floating AI Chatbot (front-end demo) -->
+  <div id="chatbot-btn">
+  💬
+</div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      Dorsova Assistant
+      <button style="background:transparent;border:none;color:#fff;font-size:18px;cursor:pointer" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Type your message..." onkeydown="if(event.key==='Enter'){sendChat()}"/>
+      <button onclick="sendChat()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    /* =========================
+       DATA (PLACEHOLDER IMAGES)
+       ========================= */
+    const dresses = [
+      { id: 1, name: "Blush Pink Gown", price: 1200, img: "https://i.pinimg.com/736x/2b/40/d9/2b40d947abc653f80d02f9544cc85e74.jpg" },
+      { id: 2, name: "White  wedding Dress", price: 3000, img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRYXAhSgUmcTS955zXIGTuMrJX_-hoRJtGP1kKhTz6k8OnVWg6Cd3sBvGX43S3kYQ0-rUidlwo3bz4f49-NRP2NMMK9Mr4aqM5UgA3bv_dYJ_H5N9Zovb4mkQ"},
+      { id: 3, name: "Peach Evening Dress", price: 950, img: "https://www.teutamatoshi.com/cdn/shop/products/WhatsAppImage2023-03-07at10.51.22.jpg?v=1678183176" },
+      { id: 4, name: "Lavender Party Dress", price: 1000, img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTfpYNcWztabB3gjbbrFvYxBLn_bPxDVVqBd613Y7okDohbK7jQBq8EURae2aVz-Q9TKuUkyGf3RvUZIyVakIXpdv774Dj65s6FV01sZKgz"},
+      { id: 5, name: "Classic Red Dress", price: 900, img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSfllHsYfh2raw5rQcx_v48rd70g66GkjNqch1veLp8pzBOMPXD6Yf23zE-rsu-CSLLpGsOHjwhMVfBUpwZ9sA0CYU7_ExttrOCRx1Ymlc" },
+      { id: 6, name: "Royal Blue Gown", price: 1000, img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS_W2gAa_iNvPEoaljuo4uVXQSuApgWRUscegQiF7c-MeWEiN7F6uMPPPJ65KLF9ZkSBBSayTFqn1TysB-7YrIpKF4X6WsPKzJR0zesKfmw" },
+      { id: 7, name: "red bridal lhenga", price: 1900, img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSskSaKg2cGptlasoEbCF155VBRYF_YgX6AMhd0jGygop8ZrlSw2QEDSiAwkZVZubnySmPJbMhMAtWdjM-z9MK9livfgnrc7BWqZsBOIFpCf2OaZLjhvcweaQ"},
+      { id: 8, name: "pastel bride", price: 3000, img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSX8j_Gv8SdIwJpX0XuioNk8RJTvXRPXysvcyxczjVoes97kmtU08qPUL3YCGY5W5shboow9hqjY992ZTTM7t2u2gNCEgyjkloL36RQ_ZsZOfukRUp1V2bmjg"},
+      { id: 9, name: "Dust Pink Hand Embroidered Organza Gown", price: 12000 ,img:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTblBtn4vX0MUGSJplYFLBFu0Jqe7FE_nGMgdQj9rOeoHlEht2THRwR_1EfodcM65m1mglxFTfQhHyF4M-yH9U5nDIsmF_ctmyA9PiIFY1zwZQHvHTS6GUVrQ"},
+      { id: 10, name: "Ball Gown Wedding Dress ", price: 2000, img:"https://i.etsystatic.com/23278384/r/il/a1490c/3228250036/il_1588xN.3228250036_5if4.jpg"},
+      { id: 11, name: "pink embroyeded lehenga", price: 12000, img:"data:image/webp;base64,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"},
+      { id: 12, name: "Red Organza Cut Work, Beads, Sequins, Pearls Embroidered Cutdana Lehenga Set", price: 1200, img:"https://static3.azafashions.com/tr:w-450/uploads/product_gallery/1741263706032_1.jpg"},
+      { id: 13, name: "pink lhengha", price: 5900, img:"https://www.mymoledro.com/cdn/shop/products/Mahi_Lehenga_Set_800x.jpg?v=1689244472"},
+      { id: 14, name: "Blue Organza, Tulle Sequins, Beads, Lace, Scallop Embroidered Lehenga Set", price: 1200, img:"https://static3.azafashions.com/tr:w-450/uploads/product_gallery/1713793782704_1.jpg"},
+      { id: 15, name: "golden gown", price: 6000, img:"data:image/webp;base64,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"},
+    ];
+
+    const jewellery = [
+      { id:'j1', name:"Kundan Bridal Set", price:2300, img:"https://medias.utsavfashion.com/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/k/u/kundan-bridal-set-v1-jvd1585.jpg" },
+      { id:'j2', name:"Pearl Necklace", price:3000, img:"https://5.imimg.com/data5/SELLER/Default/2024/2/386915734/GC/BM/TD/29767069/party-wear-pearl-jewellery-set.jpg" },
+      { id:'j3', name:"Gold-Tone Jhumkas", price:590, img:"https://img.weddingbazaar.com/photos/pictures/000/604/727/new_medium/final_cover_%281%29.jpg?1542983350" },
+      { id:'j5', name:"Diamond Look Choker", price:1000, img:"https://assets0.mirraw.com/images/4148675/fjn.2250..rs.6000_zoom.JPG?1678441553"},
+      { id:'j6', name:"Antique jwellery", price:1500, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsinncOHyNO_RXrjUnlMcyuklWdDB2QZUgKw&s"},
+      { id:'j7', name:"kundan set", price:900, img:"https://jaihoindiastore.com/cdn/shop/files/Snapinsta.app_336487257_6656763244353245_2201877563825100898_n_1080-removebg-preview.png?v=1711952157"},
+      { id:'j8', name:"polki set", price:1300, img:"https://www.curiocottage.in/cdn/shop/files/WFSE94.jpg?v=1754039371"},
+      { id:'j9', name:"Goddess Antique Gold Bridal Set ", price:4500, img:"https://www.kattam.in/cdn/shop/files/goddess-antique-gold-bridal-set-design-5-short-long-sold-separately-183428.jpg?v=1715138342&width=1080"},
+      { id:'j10', name:"Stone silver necklace", price:1700, img:"https://images.meesho.com/images/products/212739948/rbkqe_512.webp?width=512"},
+      { id:'j11', name:"Meena kundan bridal jwellery", price:1300, img:"https://i.etsystatic.com/25703673/r/il/551029/6165581521/il_570xN.6165581521_c21b.jpg"},
+      { id:'j12', name:"Rajwadi set", price:1200, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCtHAiSaUB4yH6FnTs9nfSpnfW6vpq5-4mfQ&s"},
+    ];
+
+    let currentCategory='dresses';
+    let products={dresses,jewellery};
+
+    /* =========================
+       STATE & ELEMENTS
+       ========================= */
+    const cart=[]; // {id,name,price,img,from,to}
+    const productList=document.getElementById('productList');
+    const homeSection=document.getElementById('homeSection');
+    const cartSection=document.getElementById('cartSection');
+    const cartItemsEl=document.getElementById('cartItems');
+    const grandTotalEl=document.getElementById('grandTotal');
+    const totalDaysInfo=document.getElementById('totalDaysInfo');
+
+    /* =========================
+       NAV HELPERS
+       ========================= */
+    function scrollToSection(id){
+      const el=document.getElementById(id);
+      if(!el){return}
+      window.scrollTo({top:el.offsetTop-20,behavior:'smooth'});
+    }
+
+    /* =========================
+       RENDER PRODUCTS
+       ========================= */
+    function renderProducts(list){
+      productList.innerHTML='';
+      list.forEach(p=>{
+        const card=document.createElement('div');
+        card.className='card';
+        card.innerHTML=`
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p class="price">₹${p.price}/day</p>
+          <button class="primary" onclick="addToCart('${p.id}')">Add to Cart</button>
+        `;
+        productList.appendChild(card);
+      });
+    }
+    function switchCategory(cat){
+      currentCategory=cat;
+      document.getElementById('tab-dresses').classList.toggle('active',cat==='dresses');
+      document.getElementById('tab-jewels').classList.toggle('active',cat==='jewellery');
+      renderProducts(products[cat]);
+    }
+
+    /* =========================
+       SEARCH
+       ========================= */
+    function searchProducts(){
+      const q=document.getElementById('searchInput').value.toLowerCase().trim();
+      showHome();
+      const merged=[...products.dresses,...products.jewellery];
+      const filtered=merged.filter(p=>p.name.toLowerCase().includes(q));
+      renderProducts(filtered.length?filtered:[]);
+      if(!filtered.length){
+        productList.innerHTML=`<p style="text-align:center;font-size:18px;color:#ff4d88;">No items found for "${q}" 😢</p>`;
+      }
+    }
+
+    /* =========================
+       CART LOGIC (with date-based pricing)
+       ========================= */
+    function addToCart(id){
+      const item=[...products.dresses,...products.jewellery].find(p=>p.id===id);
+      if(!item) return;
+      const today=new Date();
+      const tomorrow=new Date(); tomorrow.setDate(today.getDate()+1);
+      cart.push({
+        ...item,
+        from:formatDateInput(today),
+        to:formatDateInput(tomorrow)
+      });
+      alert(item.name+" added to cart!");
+      showCart();
+    }
+    function showHome(){homeSection.style.display='block';cartSection.style.display='none'}
+    function showCart(){homeSection.style.display='none';cartSection.style.display='block';renderCart()}
+    function clearCart(){cart.length=0;renderCart()}
+    function removeFromCart(i){cart.splice(i,1);renderCart()}
+    function updateDates(i,field,val){
+      const it=cart[i]; if(!it) return;
+      if(field==='from') it.from=val; if(field==='to') it.to=val;
+      const dFrom=new Date(it.from), dTo=new Date(it.to);
+      if(isNaN(dFrom)||isNaN(dTo)) return renderCart();
+      if(dTo<=dFrom){const fix=new Date(dFrom);fix.setDate(fix.getDate()+1);it.to=formatDateInput(fix)}
+      renderCart();
+    }
+    function computeDays(fromStr,toStr){
+      const from=new Date(fromStr), to=new Date(toStr);
+      const diff=to.getTime()-from.getTime();
+      const days=Math.ceil(diff/(1000*60*60*24));
+      return Math.max(1,days);
+    }
+    function renderCart(){
+      cartItemsEl.innerHTML='';
+      let grand=0, items=cart.length;
+      cart.forEach((c,i)=>{
+        const days=computeDays(c.from,c.to);
+        const sub=c.price*days; grand+=sub;
+        const row=document.createElement('div');
+        row.className='cart-item';
+        row.innerHTML=`
+          <img src="${c.img}" alt="${c.name}">
+          <div class="info">
+            <div>
+              <div class="title">${c.name}</div>
+              <div class="meta">₹${c.price}/day</div>
+            </div>
+            <div>
+              <label>From</label>
+              <input type="date" value="${c.from}" onchange="updateDates(${i},'from',this.value)">
+            </div>
+            <div>
+              <label>To</label>
+              <input type="date" value="${c.to}" onchange="updateDates(${i},'to',this.value)">
+            </div>
+            <div style="text-align:right;">
+              <div class="meta">Days: <b>${days}</b></div>
+              <div><b>₹${sub}</b></div>
+              <div style="margin-top:6px">
+                <button class="ghost" onclick="removeFromCart(${i})">Remove</button>
+              </div>
+            </div>
+          </div>`;
+        cartItemsEl.appendChild(row);
+      });
+      grandTotalEl.textContent="Grand Total: ₹"+grand;
+      totalDaysInfo.textContent=items?`Across ${items} item(s). Change dates to update totals.`:'';
+    }
+    function formatDateInput(d){
+      const yyyy=d.getFullYear(), mm=String(d.getMonth()+1).padStart(2,'0'), dd=String(d.getDate()).padStart(2,'0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    /* =========================
+       PAYMENT (with address validation)
+       ========================= */
+    function openPayment(){
+      if(!cart.length){alert("Your cart is empty.");return;}
+      document.getElementById('paymentPopup').style.display='flex';
+    }
+    function closePopup(){document.getElementById('paymentPopup').style.display='none'}
+    function completePayment(){
+      const get=id=>document.getElementById(id).value.trim();
+      const name=get('name'), email=get('email'), phone=get('phone'), addr1=get('address1'), city=get('city'), state=get('state'), pin=get('pincode');
+      const phoneOk=/^[6-9]\d{9}$/.test(phone), pinOk=/^\d{6}$/.test(pin);
+      if(!name||!email||!phone||!addr1||!city||!state||!pin){alert("Please fill all required fields.");return;}
+      if(!phoneOk){alert("Enter valid 10-digit Indian mobile number.");return;}
+      if(!pinOk){alert("Enter a valid 6-digit PIN code.");return;}
+      const method=document.getElementById('paymentMethod').value.toUpperCase();
+
+      // Basic order summary
+      let total=0;
+      cart.forEach(c=>{ total+=c.price*computeDays(c.from,c.to); });
+
+      alert(`Thank you ${name}!\nPayment Method: ${method}\nTotal: ₹${total}\nDelivery: ${addr1}, ${city}, ${state} - ${pin}`);
+      clearCart(); closePopup(); showHome();
+    }
+
+    /* =========================
+       CONTACT FORM (front-end only)
+       ========================= */
+    function submitContact(e){
+      e.preventDefault();
+      const name=document.getElementById('c_name').value.trim();
+      const email=document.getElementById('c_email').value.trim();
+      const phone=document.getElementById('c_phone').value.trim();
+      const addr1=document.getElementById('c_addr1').value.trim();
+      const city=document.getElementById('c_city').value.trim();
+      const state=document.getElementById('c_state').value.trim();
+      const pin=document.getElementById('c_pin').value.trim();
+
+      if(!name||!email||!phone||!addr1||!city||!state||!pin){alert("Please fill all required fields.");return false;}
+      if(!/^[6-9]\d{9}$/.test(phone)){alert("Enter valid 10-digit Indian mobile number.");return false;}
+      if(!/^\d{6}$/.test(pin)){alert("Enter a valid 6-digit PIN code.");return false;}
+
+      alert("Thanks! Your message was submitted. We'll contact you shortly.");
+      e.target.reset();
+      return false;
+    }
+
+    /* =========================
+       CHATBOT (rule-based demo)
+       ========================= */
+    const chatWindow=document.getElementById('chatWindow');
+    const chatBody=document.getElementById('chatBody');
+    const chatInput=document.getElementById('chatInput');
+
+    function toggleChat(){
+      const open=getComputedStyle(chatWindow).display==='none';
+      chatWindow.style.display=open?'flex':'none';
+      if(open){
+        chatBody.innerHTML='';
+        addBot("Hi! I’m your Dorsova assistant 👋\nAsk about pricing, delivery, sizes, return policy, or jewellery.");
+      }
+    }
+    function addMsg(text,who='bot'){
+      const row=document.createElement('div');
+      row.className='msg '+(who==='user'?'user':'');
+      const bubble=document.createElement('div');
+      bubble.className='bubble';
+      bubble.innerText=text;
+      row.appendChild(bubble);
+      chatBody.appendChild(row);
+      chatBody.scrollTop=chatBody.scrollHeight;
+    }
+    function addBot(text){addMsg(text,'bot')}
+    function sendChat(){
+      const text=chatInput.value.trim();
+      if(!text) return;
+      addMsg(text,'user');
+      chatInput.value='';
+      // simple intents
+      const t=text.toLowerCase();
+      if(/hi|hello|hey/.test(t)) return addBot("Hello! How can I help you today?");
+      if(/price|cost|rate/.test(t)) return addBot("Our rentals are day-wise. Each item card shows ₹/day. Final total = price × days set in cart.");
+      if(/deliver|shipping|pickup|return/.test(t)) return addBot("We offer delivery & pickup in most cities. Returns are due the day after your last rental day. Late fees may apply.");
+      if(/size|fit|measure/.test(t)) return addBot("We carry common sizes. Share your measurements in Contact form for styling guidance.");
+      if(/jewel|jewellery|accessories/.test(t)) return addBot("Yes! Check ‘Rental Jewellery’ tab for chokers, sets, and jhumkas.");
+      if(/contact|phone|support/.test(t)) return addBot("Use the Contact section to send details. We typically reply within a few hours.");
+      if(/payment|upi|card|cod/.test(t)) return addBot("We accept UPI/Paytm, Cards, and COD (where available).");
+      addBot("Got it! For detailed help, drop your request in the Contact form and we’ll follow up.");
+    }
+
+    /* =========================
+       INIT
+       ========================= */
+    function init(){ switchCategory('dresses'); }
+    init();
+  </script>
+</body>
+</html>
